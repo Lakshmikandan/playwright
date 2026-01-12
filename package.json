@@ -12,7 +12,7 @@
     "playwright": "^1.57.0"
   },
   "scripts": {
-    "test": "npx BROWSER=chrome cucumber-js --tags @Sanity ",
+    "test": "npx cucumber-js --tags @Sanity ",
     "report": "node generate-report.cjs"
   },
   "keywords": [],
