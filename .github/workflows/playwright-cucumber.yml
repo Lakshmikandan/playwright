@@ -40,6 +40,9 @@ jobs:
       - name: Install Playwrigh Browsers
         run:  npx playwright install --with-deps   
 
+      - name: Create reports folder
+        run: mkdir -m reports  
+
       - name: Run Playwright Cucumber Tests
         run:  |
           TAGS="${{ github.event.inputs.tags || '@Sanity' }}"

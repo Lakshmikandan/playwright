@@ -6,7 +6,7 @@ const reportPath = path.resolve('reports/cucumber-report.html');
 
 reporter.generate({
   theme: 'bootstrap',
-  jsonFile: 'reports/cucumber-report.json',
+  jsonDir: 'reports', 
   output: reportPath,
   reportSuiteAsScenarios: true,
   scenarioTimestamp: true
