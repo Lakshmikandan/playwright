@@ -15,20 +15,20 @@ Before(async function() {
         case 'chrome':
             browser = await chromium.launch({
                 channel: 'chrome',
-                headless: false
+                headless: true
             });
             break;
         case 'microsoftedge':
             browser = await chromium.launch({
                 channel: 'msedge',
-                headless: false
+                headless: true
             });
             break;
         case 'firefox':
-            browser = await firefox.launch({headless: false})    
+            browser = await firefox.launch({headless: true})    
             break;
         default:
-            browser = await chromium.launch({ headless: false});
+            browser = await chromium.launch({ headless: true});
             break;
             }
     context = await browser.newContext();
