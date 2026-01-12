@@ -1,0 +1,22 @@
+{
+  "name": "playwright-ai",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.5.0",
+    "@playwright/test": "^1.57.0",
+    "chai": "^6.2.0",
+    "cucumber-html-reporter": "^7.2.0",
+    "dotenv": "^17.2.3",
+    "open": "^11.0.0",
+    "playwright": "^1.57.0"
+  },
+  "scripts": {
+    "test": "BROWSER=chrome cucumber-js --tags @Sanity ",
+    "report": "node generate-report.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
