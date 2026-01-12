@@ -39,7 +39,7 @@ jobs:
       - name: Run Playwright Cucumber Tests
         run:  |
           TAGS="${{ github.event.inputs.tags || '@Sanity' }}"
-          echo "Running tests with tags ${{ TAGS }}"
+          echo "Running tests with tags: $TAGS"
 
       - name: Generate HTML report
         if: always()
