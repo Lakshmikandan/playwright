@@ -8,7 +8,7 @@ on:
   workflow_dispatch:  
     inputs:
       tags:
-        descriptions: "Cucumber tags (e.g. @Sanity)"
+        description: "Cucumber tags (e.g. @Sanity)"
         required: false
         default: "@Sanity"
 
@@ -25,6 +25,11 @@ jobs:
         with:
           node-version: 24
 
+      - name: Set report name
+        run: |
+          TIMESTAMP = $(date } "%Y-%m-%d_%H-%M-%S")
+          echo "REPORT_NAME=cucumber-report-${TIMESTAMP}-run-${GITHUB_RUN_NUMBER}" >> $GITBUG_ENV
+
       - name: Install dependencies
         run: npm ci  
 
@@ -33,13 +38,8 @@ jobs:
 
       - name: Run Playwright Cucumber Tests
         run:  |
-          if  [ -z "${{ github.event.inputs.tags }}"]; then
-            echo "Running all test"
-            npx cucumber-js
-          else
-            echo "Running tests with tags: ${{ github.event.inputs.tags}}"  
-            npx cucumber-js --tags "${{ github.event.inputs.tags}}"
-          fi  
+          TAGS="${{ github.event.inputs.tags || '@Sanity' }}"
+          echo "Running tests with tags ${{ TAGS }}"
 
       - name: Generate HTML report
         if: always()
@@ -49,5 +49,5 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: cucumber-report
+          name: ${{ env.REPORT_NAME }}
           path: reports/
