@@ -13,8 +13,8 @@ on:
         default: "@Sanity"
 
 jobs:
-  steps:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
