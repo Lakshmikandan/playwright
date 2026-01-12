@@ -32,7 +32,14 @@ jobs:
         run:  npx playwright install --with-deps   
 
       - name: Run Playwright Cucumber Tests
-        run:  npx cucumber-js --tags "${{ github.event.inputs.tags}}"
+        run:  |
+          if  [ -z "${{ github.event.inputs.tags }}"]; then
+            echo "Running all test"
+            npx cucumber-js
+          else
+            echo "Running tests with tags: ${{ github.event.inputs.tags}}"  
+            npx cucumber-js --tags "${{ github.event.inputs.tags}}"
+          fi  
 
       - name: Generate HTML report
         if: always()
