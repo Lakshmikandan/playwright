@@ -38,7 +38,7 @@ jobs:
         run: npm ci  
 
       - name: Install Playwrigh Browsers
-        run:  npx playwright install --with-deps   
+        run:  npx playwright install --with-deps  
 
       - name: Create reports folder
         run: mkdir -m reports  
@@ -47,6 +47,10 @@ jobs:
         run:  |
           TAGS="${{ github.event.inputs.tags || '@Sanity' }}"
           echo "Running tests with tags: $TAGS"
+          npx cucumber-js --tags $TAGS
+
+      - name: Debug reports folder
+        run: ls -l reports    
 
       - name: Generate HTML report
         if: always()
