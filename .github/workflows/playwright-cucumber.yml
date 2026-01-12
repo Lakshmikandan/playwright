@@ -27,7 +27,7 @@ jobs:
 
       - name: Set report name
         run: |
-          TIMESTAMP = $(date } "%Y-%m-%d_%H-%M-%S")
+          TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
           echo "REPORT_NAME=cucumber-report-${TIMESTAMP}-run-${GITHUB_RUN_NUMBER}" >> $GITBUG_ENV
 
       - name: Install dependencies
