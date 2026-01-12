@@ -41,7 +41,7 @@ jobs:
         run:  npx playwright install --with-deps  
 
       - name: Create reports folder
-        run: mkdir -m reports  
+        run: mkdir -p reports  
 
       - name: Run Playwright Cucumber Tests
         run:  |
