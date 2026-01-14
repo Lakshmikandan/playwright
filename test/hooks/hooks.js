@@ -30,7 +30,7 @@ Before(async function() {
             browser = await firefox.launch({headless: true})    
             break;
         default:
-            browser = await chromium.launch({ headless: false});
+            browser = await chromium.launch({ headless: true});
             break;
             }
     context = await browser.newContext({
