@@ -2,7 +2,7 @@ const {test,expect, selectors} = require(`@playwright/test`);
 class HomePage{
     constructor(page){
         this.page = page
-        this.login = page.locator('#gnav_login');
+        this.login = page.locator('#gnav_login1');
         this.loginButton = page.getByRole('link', {name: /log in/i });
     }
 

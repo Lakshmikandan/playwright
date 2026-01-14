@@ -9,11 +9,14 @@
     "cucumber-html-reporter": "^7.2.0",
     "dotenv": "^17.2.3",
     "open": "^11.0.0",
-    "playwright": "^1.57.0"
+    "playwright": "^1.57.0",
+    "rimraf": "^6.1.2"
   },
   "scripts": {
-    "test": "npx cucumber-js --tags @Sanity ",
-    "report": "node generate-report.cjs"
+    "clean:reports": "rimraf reports",
+    "test": "npm run clean:reports && cucumber-js --tags @Sanity ",
+    "report": "node generate-report.cjs",
+    "test-docker": "docker run -it -p 5900:5900 playwright-cucumber"
   },
   "keywords": [],
   "author": "",

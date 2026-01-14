@@ -19,7 +19,7 @@ module.exports = {
       snippetInterface: 'async-await',
     },
     parallel: 1,
-    retry: 2,
+    retry: 0,
     publishQuiet: true
   }
 };

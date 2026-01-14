@@ -8,7 +8,7 @@ Given('I open the example page', async function () {
 });
 
 Then('I should see the title {string}', async function (string) {
-
+    
 });
 
 Then('I click on the Login button', async function () {
