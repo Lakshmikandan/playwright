@@ -48,26 +48,19 @@ After(async function (scenario) {
         const screenshot = await this.page.screenshot();
         await this.attach(screenshot, 'image/png');
 
-        const video = this.page.video();
+        const videoPath = await this.page.video().path();
 
-    if (video) {
-      const webmPath = await video.path();
-      const mp4Path = webmPath.replace('.webm', '.mp4');
+    // Extract only file name
+    const fileName = path.basename(videoPath);
 
-      try {
-        execSync(`ffmpeg -i "${webmPath}" "${mp4Path}"`, { stdio: 'ignore' });
-        await this.attach(
-          `<a href="${mp4Path}" target="_blank">▶️ Watch failure video</a>`,
-          'text/html'
-        );
-      } catch (err) {
-        // fallback if ffmpeg is not installed
-        await this.attach(
-          `<a href="${webmPath}" target="_blank">▶️ Watch failure video (webm)</a>`,
-          'text/html'
-        );
-      }
-    }
+    // Use RELATIVE path
+    const relativePath = `videos/${fileName}`;
+
+    await this.attach(
+      `<a href="${relativePath}" target="_blank">▶️ Watch failure video</a>`,
+      'text/html'
+    );
+
 
     } 
     if(page) await page.close();
