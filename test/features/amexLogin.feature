@@ -1,7 +1,7 @@
 @Sanity
 Feature: Verify Example Website
 
-  Scenario: Verify homepage
-    Given I open the amarican express page
-    Then I should see the title of american express
-    And I click on the Login link
+  Scenario: Open Example page and verify title
+    Given I open the example page
+    Then I should see the title "American Express"
+    And I click on the Login button
